@@ -4,7 +4,6 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-import { Devs } from "@utils/constants";
 import definePlugin from "@utils/types";
 import { FluxEvent } from "@vencord/discord-types";
 import { React, SelectedChannelStore, showToast, ToastPosition, ToastType, UserSettingsActionCreators } from "@webpack/common";
@@ -32,7 +31,10 @@ const { PreloadedUserSettingsActionCreators } = UserSettingsActionCreators;
 export default definePlugin({
     name: "AutoSwitchStatus",
     description: "Automatically switches your discord status to 'away' when you are muted inside a server or 'invisible' when disconnected from a server.",
-    authors: [Devs.nicola02nb],
+    authors: [{
+        name: "nicola02nb",
+        id: 257900031351193600n
+    }],
     settings,
     flux: {
         AUDIO_TOGGLE_SELF_DEAF: handleMuteStateChange,
