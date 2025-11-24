@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
+import { TextCompat } from "@components/BaseText";
 import { findByPropsLazy, findComponentByCodeLazy } from "@webpack";
-import { Text } from "@webpack/common";
 
 const StatusIcon = findComponentByCodeLazy(".ONLINE&&", ".mask");
 const ToastClasses = findByPropsLazy("toast", "content");
@@ -14,7 +14,7 @@ export function Toast({ message, status, size }: { message: string; status: stri
     return (
         <div className={`${ToastClasses.toast}`}>
             <StatusIcon status={status} size={size} className={`${ToastClasses.icon}`} />
-            <Text variant="text-md/normal">{message}</Text>
+            <TextCompat variant="text-md/normal">{message}</TextCompat>
         </div>
     );
 }
