@@ -4,17 +4,11 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-import { TextCompat } from "@components/BaseText";
-import { findByPropsLazy, findComponentByCodeLazy } from "@webpack";
+import { findComponentByCodeLazy } from "@webpack";
 
 const StatusIcon = findComponentByCodeLazy(".ONLINE&&", ".mask");
-const ToastClasses = findByPropsLazy("toast", "content");
 
-export function Toast({ message, status, size }: { message: string; status: string; size: number; }) {
-    return (
-        <div className={`${ToastClasses.toast}`}>
-            <StatusIcon status={status} size={size} className={`${ToastClasses.icon}`} />
-            <TextCompat variant="text-md/normal">{message}</TextCompat>
-        </div>
-    );
+// Discord's new toast API only takes an icon component, so the status icon is passed in on its own
+export function StatusToastIcon({ status, size }: { status: string; size: number; }) {
+    return <StatusIcon status={status} size={size} />;
 }

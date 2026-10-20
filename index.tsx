@@ -6,9 +6,9 @@
 
 import definePlugin from "@utils/types";
 import { FluxEvent } from "@vencord/discord-types";
-import { React, SelectedChannelStore, showToast, Toasts, UserSettingsActionCreators } from "@webpack/common";
+import { React, SelectedChannelStore, showToast, UserSettingsActionCreators } from "@webpack/common";
 
-import { Toast } from "./components/Toast";
+import { StatusToastIcon } from "./components/Toast";
 import { settings } from "./settings";
 import { MediaEngineStore } from "./stores";
 
@@ -109,7 +109,7 @@ function updateStatus(toStatus) {
 function showToastCustom(message: string, status: string) {
     console.log("Showing toast:", message, "with status:", status);
     if (!settings.store.showToast) return;
-    showToast(message, Toasts.Type.SUCCESS, { position: Toasts.Position.BOTTOM, component: <Toast message={message} status={status} size={16} /> });
+    showToast({ text: message, position: "bottom", icon: () => <StatusToastIcon status={status} size={16} /> });
 }
 
 
